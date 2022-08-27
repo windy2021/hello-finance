@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+    </div>
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                {% for dt in data %}
+                <tr>
+                    <td>{{ dt.stock_symbol }}</td>
+                    <td>{{ dt.stock_name }}</td>
+                    <td>{{ dt.shares }}</td>
+                    <td>{{ dt.price }}</td>
+                    <td>{{ dt.total }}</td>
+                </tr>
+                {% endfor %}
+
+                {% else %}
+                <tr>
+                    <td colspan="5">
+                        You do not have any shares.
+                    </td>
+                </tr>
+                {% endif %}
+                <tr style="border-top: solid 2px black">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Cash</strong></td>
+                    <td>{{ info.cash }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>TOTAL</strong></td>
+                    <td>{{ info.grand_total }}</td>
+                </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

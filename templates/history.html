@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+        <h2>History</h2>
+    </div>
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    <th>Shares</th>
+                    <th>DateTime</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                {% for dt in data %}
+                <tr>
+                    <td>{{ dt.transaction_type }}</td>
+                    <td>{{ dt.stock_symbol }}</td>
+                    <td>{{ dt.share_amount }}</td>
+                    <td>{{ dt.stock_price }}</td>
+                    <td>{{ dt.transaction_date }}</td>
+                </tr>
+                {% endfor %}
+
+                {% else %}
+                <tr>
+                    <td colspan="5">
+                        You do not have any shares.
+                    </td>
+                </tr>
+                {% endif %}
+                <tr style="border-top: solid 2px black">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Cash</strong></td>
+                    <td>{{ info.cash }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>TOTAL</strong></td>
+                    <td>{{ info.grand_total }}</td>
+                </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
